@@ -11,7 +11,7 @@ class PupilRemote {
 
   public function __construct() {
     if(!class_exists('ZMQSocket')) {
-       throw new Exception("The ZeroMQ extension must be installed");
+       throw new \Exception("The ZeroMQ extension must be installed");
     }
   }
 
@@ -24,7 +24,7 @@ class PupilRemote {
 
   public function getTimebase() {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $time = $this->socket->send("t")->recv();
     return $time;
@@ -32,14 +32,14 @@ class PupilRemote {
 
   public function setTimebase(float $base) {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $this->socket->send("T {$base}")->recv();
   }
 
   public function startCalibration() {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $result = $this->socket->send("C")->recv();
     return $result === "OK";
@@ -47,7 +47,7 @@ class PupilRemote {
 
   public function stopCalibration() {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $result = $this->socket->send("c")->recv();
     return $result === "OK";
@@ -55,7 +55,7 @@ class PupilRemote {
 
   public function startRecording($recordingName = null) {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $result = $this->socket->send("R" . ($recordingName !== null ? " {$recordingName}" : ""))->recv();
     return $result === "OK";
@@ -63,7 +63,7 @@ class PupilRemote {
 
   public function stopRecording() {
     if(!$this->isConnected) {
-       throw new Exception("Socket not connected");
+       throw new \Exception("Socket not connected");
     }
     $result = $this->socket->send("r")->recv();
     return $result === "OK";
