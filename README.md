@@ -9,8 +9,8 @@ A simple PHP remote control client for the [Pupil eye tracker](https://pupil-lab
 
 ## Installation
 
-Package is available on [Packagist](http://packagist.org/packages/ignacioxd/pupil-remote-php),
-you can install it using [Composer](http://getcomposer.org).
+The package is available on [Packagist](http://packagist.org/packages/ignacioxd/pupil-remote-php),
+and you can install it using [Composer](http://getcomposer.org):
 
 ```shell
 composer require ignacioxd/pupil-remote-php
